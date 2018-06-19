@@ -43,6 +43,6 @@ USER root
 RUN /bin/mkdir /etc/supervisor.d/
 ADD example.ini /etc/supervisor.d/
 
-VOLUME [${LOG_DIR}]
+VOLUME ${LOG_DIR}
 EXPOSE 9050
 ENTRYPOINT ["sh", "-c", "/usr/bin/supervisord --nodaemon"]
