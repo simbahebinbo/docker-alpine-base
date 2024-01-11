@@ -1,13 +1,27 @@
-项目部署说明
+使用说明
 
 
-构建镜像
+* 构建镜像
 
-$ sudo docker build . -t alpine-example
+```shell
+$ ./build-docker.sh
+```
+
+* 启动镜像
+
+```shell
+$ ./start-docker.sh
+```
 
 
-启动镜像:
+* 调试镜像
 
-$ sudo docker run -d -v /tmp/alpine-example-`date +'%Y%m%d%H%M%S'`:/data/logs -p 9050:9050 -t alpine-example:latest
+```shell
+$ ./debug-docker.sh
+```
 
+* 停止镜像
 
+```shell
+$ ./stop-docker.sh
+```
