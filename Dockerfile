@@ -38,10 +38,12 @@ ARG LOG_DIR=${USER_HOME}/logs
 
 # Create jovyan user with UID=1000 and in the 'users' group
 #用户名 jovyan  密码:123456
+RUN addgroup -g ${NB_UID} -S ${NB_USER}
 RUN adduser -D -s ${SHELL} -u ${NB_UID} -G wheel ${NB_USER}
 RUN echo "${NB_USER}:${NB_PASSWORD}" | chpasswd
 
-#sudo时免密
+
+#sudo 时免密
 RUN echo "jovyan  ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/jovyan
 
 
@@ -56,14 +58,14 @@ WORKDIR ${USER_HOME}
 
 
 #创建日志目录
-RUN /bin/mkdir -m 777 -p ${LOG_DIR}
+RUN /bin/mkdir -p ${LOG_DIR}
 
-##添加源码
+#添加源码
 ADD source ${USER_HOME}/
-RUN sudo chmod +x ${USER_HOME}/noexit.sh && sudo chgrp wheel ${USER_HOME}/noexit.sh && sudo chown ${NB_USER} ${USER_HOME}/noexit.sh
+RUN sudo chmod +x ${USER_HOME}/noexit.sh && sudo chgrp ${NB_USER} ${USER_HOME}/noexit.sh && sudo chown ${NB_USER} ${USER_HOME}/noexit.sh
 
 #添加保持运行状态的脚本，用于调试
-RUN sudo chmod +x ${USER_HOME}/idle.sh && sudo chgrp wheel ${USER_HOME}/idle.sh && sudo chown ${NB_USER} ${USER_HOME}/idle.sh
+RUN sudo chmod +x ${USER_HOME}/idle.sh && sudo chgrp ${NB_USER} ${USER_HOME}/idle.sh && sudo chown ${NB_USER} ${USER_HOME}/idle.sh
 
 
 #添加守护进程配置文件
