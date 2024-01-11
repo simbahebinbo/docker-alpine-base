@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.19.0
 
 USER root
 
@@ -32,7 +32,7 @@ RUN adduser -s ${SHELL} -D -u ${NB_UID} ${NB_USER}
 #创建日志目录
 RUN /bin/mkdir -m 777 -p ${LOG_DIR}
 
-USER $NB_USER
+USER ${NB_USER}
 
 ##添加源码
 ADD source ${USER_HOME}/
