@@ -2,4 +2,4 @@
 
 # 构建docker镜像
 
-docker build . -t alpine-example
+docker build . -t lansheng228/alpine-base
