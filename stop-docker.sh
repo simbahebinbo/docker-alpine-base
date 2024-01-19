@@ -2,6 +2,7 @@
 
 #停掉正在运行的docker容器
 
+
+docker stop $(docker ps -qa --filter ancestor=alpine-example)
+docker rm $(docker ps -qa --filter ancestor=alpine-example)
 docker ps -a
-docker stop alpine-example
-docker rm alpine-example
