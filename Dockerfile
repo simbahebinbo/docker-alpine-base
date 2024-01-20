@@ -29,12 +29,12 @@ ENV LANGUAGE zh_CN.UTF-8
 ENV LC_ALL zh_CN.UTF-8
 
 #定义常用变量
-ARG SHELL=/bin/bash
-ARG NB_USER=jovyan
-ARG NB_PASSWORD=123456
-ARG NB_UID=1000
-ARG USER_HOME=/home/${NB_USER}
-ARG LOG_DIR=${USER_HOME}/logs
+ENV SHELL=/bin/bash
+ENV NB_USER=jovyan
+ENV NB_PASSWORD=123456
+ENV NB_UID=1000
+ENV USER_HOME=/home/${NB_USER}
+ENV LOG_DIR=${USER_HOME}/logs
 
 # Create jovyan user with UID=1000 and in the 'users' group
 #用户名 jovyan  密码:123456
